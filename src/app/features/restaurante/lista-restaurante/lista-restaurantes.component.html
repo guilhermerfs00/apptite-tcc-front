@@ -1,0 +1,12 @@
+<div class="lista-restaurantes-container">
+  <h1>Lista de Restaurantes</h1>
+  <div class="restaurantes-grid">
+    <div *ngFor="let restaurante of restaurantes" class="restaurante-box">
+      <h2>{{ restaurante.nome }}</h2>
+      <p>{{ restaurante.endereco }}</p>
+      <button (click)="cadastrarCardapio(restaurante.idRestaurante)" class="cardapio-button">
+        Cadastrar Cardápio
+      </button>
+    </div>
+  </div>
+</div>
