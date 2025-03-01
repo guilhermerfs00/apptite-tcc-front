@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RestauranteService } from '../../../core/services/restaurante.service';
-import { Restaurante } from '../../../core/models/restaurante.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'; // Importe o Router
+import { RestauranteResponse } from '../../../core/models/restaurante/restaurante-response.model';
 
 @Component({
   selector: 'app-lista-restaurantes',
@@ -12,7 +12,7 @@ import { Router } from '@angular/router'; // Importe o Router
   styleUrls: ['./lista-restaurantes.component.css'],
 })
 export class ListaRestaurantesComponent implements OnInit {
-  restaurantes: Restaurante[] = []; // Lista de restaurantes
+  restaurantes: RestauranteResponse[] = []; // Lista de restaurantes
 
   constructor(
     private restauranteService: RestauranteService,

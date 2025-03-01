@@ -1,0 +1,59 @@
+<div class="cadastro-categoria-container">
+  <h1>Cadastro de Categoria</h1>
+
+  <!-- Formulário de Cadastro de Categoria -->
+  <form (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <label for="nome">Nome da Categoria</label>
+      <input
+        type="text"
+        id="nome"
+        [(ngModel)]="categoriaRequest.nome"
+        name="nome"
+        required
+        placeholder="Digite o nome da categoria"
+      />
+    </div>
+    <button type="submit" class="cadastro-button">Cadastrar</button>
+  </form>
+
+  <!-- Lista de Categorias -->
+  <div class="categorias-list">
+    <h2>Categorias do Restaurante</h2>
+    <ul>
+      <li *ngFor="let categoria of categoriasPage?.content">
+        {{ categoria.nome }}
+      </li>
+    </ul>
+
+    <!-- Controles de Paginação -->
+    <div class="pagination">
+      <button
+        (click)="onPageChange(currentPage - 1)"
+        [disabled]="currentPage === 0"
+        class="pagination-button"
+      >
+        Anterior
+      </button>
+
+      <div class="pagination-numbers">
+        <button
+          *ngFor="let page of getPages()"
+          (click)="onPageChange(page)"
+          [class.active]="page === currentPage"
+          class="pagination-button"
+        >
+          {{ page + 1 }}
+        </button>
+      </div>
+
+      <button
+        (click)="onPageChange(currentPage + 1)"
+        [disabled]="currentPage === categoriasPage.totalPages - 1"
+        class="pagination-button"
+      >
+        Próxima
+      </button>
+    </div>
+  </div>
+</div>

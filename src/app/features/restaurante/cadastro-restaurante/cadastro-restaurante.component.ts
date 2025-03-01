@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RestauranteService } from '../../../core/services/restaurante.service';
-import { RestauranteRequest } from '../../../core/models/restaurante-request.model';
+import { RestauranteRequest } from '../../../core/models/restaurante/restaurante-request.model';
 import { Router } from '@angular/router'; // Importe o Router
 
 @Component({
