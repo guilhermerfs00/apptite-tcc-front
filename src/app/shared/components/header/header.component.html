@@ -1,8 +1,38 @@
 <header>
-    <h1>{{ title }}</h1>
+  <!-- Botão de Menu (Opcional para Mobile) -->
+  <button class="menu-btn" (mouseenter)="toggleSidebar(true)">☰</button>
+
+  <!-- Sidebar -->
+  <div 
+    class="sidebar" 
+    [class.open]="isSidebarOpen" 
+    (mouseenter)="toggleSidebar(true)" 
+    (mouseleave)="toggleSidebar(false)">
+    
+    <button class="close-btn" (click)="toggleSidebar(false)">✖</button>
+
     <nav>
-      <a routerLink="/restaurantes">Restaurantes</a>
-      <a routerLink="/cardapios">Cardápios</a>
-      <a routerLink="/mesas">Mesas</a>
+      <a routerLink="/buscar" (click)="toggleSidebar(false)">
+        <i class="fas fa-search"></i> Buscar
+      </a>
+      <a routerLink="/sacola" (click)="toggleSidebar(false)">
+        <i class="fas fa-shopping-cart"></i> Sacola
+      </a>
+      <a routerLink="/pedido" (click)="toggleSidebar(false)">
+        <i class="fas fa-list"></i> Pedido
+      </a>
+      <a routerLink="/conta" (click)="toggleSidebar(false)">
+        <i class="fas fa-user"></i> Conta
+      </a>
+      <a routerLink="/pagamento" (click)="toggleSidebar(false)">
+        <i class="fas fa-credit-card"></i> Pagamento
+      </a>
+      <a routerLink="/perfil" (click)="toggleSidebar(false)">
+        <i class="fas fa-user-circle"></i> Perfil
+      </a>
+      <a (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </a>
     </nav>
-  </header>
+  </div>
+</header>
