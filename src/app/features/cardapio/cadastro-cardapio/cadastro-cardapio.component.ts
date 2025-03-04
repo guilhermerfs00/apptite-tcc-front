@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CardapioService } from '../../../core/services/cardapio.service';
+import { RestauranteService } from '../../../core/services/restaurante.service';
 import { CardapioRequest } from '../../../core/models/cardapio/cardapio-request.model';
 import { CardapioResponse } from '../../../core/models/cardapio/cardapio-response.model';
+import { RestauranteResponse } from '../../../core/models/restaurante/restaurante-response.model';
 
 @Component({
   selector: 'app-cadastro-cardapio',
@@ -14,27 +16,34 @@ import { CardapioResponse } from '../../../core/models/cardapio/cardapio-respons
 })
 export class CadastroCardapioComponent implements OnInit {
   idRestaurante!: number;
+  restaurante!: RestauranteResponse; // Guarda os dados do restaurante
   cardapioRequest: CardapioRequest = { nome: '', idRestaurante: 0 };
 
   constructor(
     private route: ActivatedRoute,
     private cardapioService: CardapioService,
-    private router: Router // Adicionado para redirecionamento
+    private restauranteService: RestauranteService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    // Obtém o ID do restaurante da rota
     this.idRestaurante = +this.route.snapshot.paramMap.get('idRestaurante')!;
     this.cardapioRequest.idRestaurante = this.idRestaurante;
+
+    this.restauranteService.obterRestaurantePorId(this.idRestaurante).subscribe({
+      next: (data: RestauranteResponse) => {
+        this.restaurante = data;
+      },
+      error: (error: any) => {
+        console.error('Erro ao carregar restaurante:', error);
+      },
+    });
   }
 
   onSubmit(): void {
-    // Envia os dados do formulário para a API
     this.cardapioService.criarCardapio(this.cardapioRequest).subscribe({
       next: (response: CardapioResponse) => {
-        console.log('Cardápio criado com sucesso:', response);
         alert('Cardápio criado com sucesso!');
-        // Redireciona para a página de cadastro de categoria, passando o ID do cardápio
         this.router.navigate(['/cadastro-categoria', response.idCardapio]);
       },
       error: (error) => {

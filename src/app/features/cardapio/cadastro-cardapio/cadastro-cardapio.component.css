@@ -1,33 +1,65 @@
 .cadastro-cardapio-container {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 400px;
+  margin: 50px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Campo de entrada */
 .input-group {
   margin-bottom: 15px;
+  text-align: left;
 }
 
 .input-group label {
   display: block;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 
 .input-group input {
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
 }
 
+.input-group input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+/* Botão */
 .cadastro-button {
+  width: 100%;
+  padding: 12px;
   background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .cadastro-button:hover {

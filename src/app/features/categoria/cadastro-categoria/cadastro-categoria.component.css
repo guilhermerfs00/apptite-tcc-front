@@ -1,58 +1,5 @@
-.cadastro-categoria-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.input-group {
-  margin-bottom: 15px;
-}
-
-.input-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.cadastro-button {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cadastro-button:hover {
-  background-color: #218838;
-}
-
-.categorias-list {
-  margin-top: 20px;
-}
-
-.categorias-list ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.categorias-list li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.pagination {
+/* Controles de Paginação */
+.pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,32 +7,22 @@
   gap: 10px;
 }
 
-.pagination-numbers {
-  display: flex;
-  gap: 5px;
-}
-
 .pagination-button {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination-button:hover:not(:disabled) {
-  background-color: #28a745;
-  color: white;
-}
-
-.pagination-button.active {
-  background-color: #28a745;
-  color: white;
+  transition: background-color 0.3s ease;
 }
 
 .pagination-button:disabled {
-  background-color: #f1f1f1;
-  color: #ccc;
+  background-color: #ccc;
   cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #333;
 }

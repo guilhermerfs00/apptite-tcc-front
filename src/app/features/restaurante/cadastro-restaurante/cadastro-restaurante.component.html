@@ -1,5 +1,6 @@
 <div class="cadastro-container">
   <h1>Cadastro de Restaurante</h1>
+
   <form (ngSubmit)="onSubmit()">
     <div class="input-group">
       <label for="nome">Nome do Restaurante</label>
@@ -11,4 +12,9 @@
     </div>
     <button type="submit" class="cadastro-button">Cadastrar</button>
   </form>
+
+  <hr />
+
+  <!-- Chamando a lista e escutando o evento -->
+  <app-lista-restaurantes #lista (restauranteAdicionado)="lista.listaRestaurantes()"></app-lista-restaurantes>
 </div>

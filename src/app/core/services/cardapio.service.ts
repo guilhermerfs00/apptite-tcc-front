@@ -16,4 +16,8 @@ export class CardapioService {
   criarCardapio(cardapioRequest: CardapioRequest): Observable<CardapioResponse> {
     return this.http.post<CardapioResponse>(this.apiUrl, cardapioRequest);
   }
+
+  obterCardapioPorId(idCardapio: number): Observable<CardapioResponse> {
+    return this.http.get<CardapioResponse>(`${this.apiUrl}/${idCardapio}`);
+  }
 }
