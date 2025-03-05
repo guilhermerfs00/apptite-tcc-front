@@ -1,0 +1,161 @@
+/* Container principal */
+.lista-categorias-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Título */
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* Campo de busca */
+.search-container {
+  width: 100%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+  border-color: #000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid de categorias */
+.categorias-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+/* Card do categoria */
+.categoria-box {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 180px; /* Define altura mínima para todos os cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.categoria-box:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Nome do categoria */
+.categoria-box h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+/* Endereço */
+.categoria-box p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Faz com que o conteúdo cresça igualmente */
+}
+
+/* Botão */
+.categoria-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Mantém o botão sempre no final do card */
+}
+
+.categoria-button:hover {
+  background-color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .categorias-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .categorias-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Controles de Paginação */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #333;
+}
+
+/* Botão deletar */
+.delete-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #f87a7a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Mantém o botão sempre no final do card */
+}
+
+.delete-button:hover {
+  background-color: #f39a9a;
+}

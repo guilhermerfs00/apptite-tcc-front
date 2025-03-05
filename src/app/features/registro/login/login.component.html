@@ -4,16 +4,16 @@
   </div>
   <form (ngSubmit)="onSubmit()" class="login-form">
     <div class="input-group">
-      <label for="email">Usuario Admin</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="admin@admin.com" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Digite seu email" required>
     </div>
     <div class="input-group">
       <label for="password">Senha</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required>
+      <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Digite sua senha" required>
     </div>
     <button type="submit" class="login-button">ENTRAR</button>
   </form>
   <div class="register-link">
-    <a href="#">REGISTRAR</a>
+    <a routerLink="/registro">REGISTRAR</a>
   </div>
 </div>

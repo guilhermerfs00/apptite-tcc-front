@@ -1,26 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';  // ✅ Necessário para *ngFor funcionar corretamente
 import { CategoriaService } from '../../../core/services/categoria.service';
 import { RestauranteService } from '../../../core/services/restaurante.service';
 import { RestauranteResponse } from '../../../core/models/restaurante/restaurante-response.model';
 import { CategoriaRequest } from '../../../core/models/categoria/categoria-request';
-
+import { ListaCategoriaComponent } from '../lista-categoria/lista-categoria.component';
 
 @Component({
   selector: 'app-cadastro-categoria',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule, ListaCategoriaComponent],
   templateUrl: './cadastro-categoria.component.html',
   styleUrls: ['./cadastro-categoria.component.css'],
 })
 export class CadastroCategoriaComponent implements OnInit {
+  @ViewChild(ListaCategoriaComponent) listaCategorias!: ListaCategoriaComponent;
+
   idRestaurante!: number;
   restaurante!: RestauranteResponse;
-  categoriaRequest: CategoriaRequest = {
-    nome: '', idRestaurante: 0,
-    idCardapio: 0
-  };
+  categoriaRequest: CategoriaRequest = { nome: '', idRestaurante: 0 };
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +33,6 @@ export class CadastroCategoriaComponent implements OnInit {
     this.idRestaurante = +this.route.snapshot.paramMap.get('idRestaurante')!;
     this.categoriaRequest.idRestaurante = this.idRestaurante;
 
-    // Busca o nome do restaurante
     this.restauranteService.obterRestaurantePorId(this.idRestaurante).subscribe({
       next: (data) => {
         this.restaurante = data;
@@ -48,7 +47,8 @@ export class CadastroCategoriaComponent implements OnInit {
     this.categoriaService.criarCategoria(this.categoriaRequest).subscribe({
       next: () => {
         alert('Categoria criada com sucesso!');
-        this.router.navigate(['/lista-restaurantes']); // Volta para a lista de restaurantes
+        this.categoriaRequest.nome = '';
+        this.listaCategorias.carregarCategorias();
       },
       error: (error) => {
         console.error('Erro ao criar categoria:', error);
@@ -56,4 +56,9 @@ export class CadastroCategoriaComponent implements OnInit {
       },
     });
   }
+
+  cadastrarItem(idCategoria: number): void {
+    this.router.navigate(['/cadastro-item', idCategoria]);
+  }
+  
 }

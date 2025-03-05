@@ -1,16 +1,22 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './features/login/login.component';
+import { LoginComponent } from './features/registro/login/login.component';
 import { CadastroRestauranteComponent } from './features/restaurante/cadastro-restaurante/cadastro-restaurante.component';
 import { ListaRestaurantesComponent } from './features/restaurante/lista-restaurante/lista-restaurante.component';
-import { CadastroCardapioComponent } from './features/cardapio/cadastro-cardapio/cadastro-cardapio.component';
 import { CadastroCategoriaComponent } from './features/categoria/cadastro-categoria/cadastro-categoria.component';
+import { RegistroPasso1Component } from './features/registro/registro-passo-1/registro-passo1.component';
+import { RegistroPasso2Component } from './features/registro/registro-passo-2/registro-passo2.component';
+import { CadastroItemComponent } from './features/item/cadastro-item/cadastro-item.component';
+import { ListaItemComponent } from './features/item/lista-item/lista-item.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro-restaurante', component: CadastroRestauranteComponent },
   { path: 'lista-restaurantes', component: ListaRestaurantesComponent },
-  { path: 'cadastro-cardapio/:idRestaurante', component: CadastroCardapioComponent },
-  { path: 'cadastro-categoria/:idCardapio', component: CadastroCategoriaComponent },
+  { path: 'cadastro-categoria/:idRestaurante', component: CadastroCategoriaComponent },
+  { path: 'registro', component: RegistroPasso1Component },
+  { path: 'registro-passo2', component: RegistroPasso2Component },
+  { path: 'cadastro-item/:idCategoria', component: CadastroItemComponent },
+  { path: 'lista-item/:idCategoria', component: ListaItemComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];

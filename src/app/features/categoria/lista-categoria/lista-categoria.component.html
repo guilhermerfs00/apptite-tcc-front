@@ -1,0 +1,32 @@
+<div class="lista-categorias-container">
+  <h1>Lista de categorias</h1>
+
+  <!-- Campo de busca -->
+  <div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Buscar categoria..." 
+      [(ngModel)]="searchTerm" 
+      (input)="filtrarCategorias()"
+    />
+  </div>
+
+  <div class="categorias-grid">
+    <div *ngFor="let categoria of categorias" class="categoria-box">
+      <h2>{{ categoria.nome }}</h2>
+      <button (click)="cadastrarItem(categoria.idCategoria)" class="categoria-button">
+        Cadastrar itens
+      </button>      
+      <button class="delete-button" (click)="excluirCategoria(categoria.idCategoria)">
+        Excluir
+      </button>
+    </div>
+    <div class="pagination-container" *ngIf="totalPages > 1">
+      <button (click)="paginaAnterior()" [disabled]="pageNumber === 0" class="pagination-button">◀ Anterior</button>
+      <span>Página {{ pageNumber + 1 }} de {{ totalPages }}</span>
+      <button (click)="proximaPagina()" [disabled]="pageNumber >= totalPages - 1" class="pagination-button">Próxima ▶</button>
+    </div>
+  </div>
+
+
+</div>

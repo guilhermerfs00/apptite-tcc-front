@@ -19,7 +19,12 @@ export class LoginComponent {
     console.log('Email:', this.email);
     console.log('Password:', this.password);
 
-    // Redireciona para a página de cadastro de restaurante
-    this.router.navigate(['/cadastro-restaurante']);
+    // Simula um login simples
+    if (this.email === 'admin' && this.password === '123') {
+      localStorage.setItem('userToken', 'token123');
+      this.router.navigate(['/cadastro-restaurante']);
+    } else {
+      alert('Credenciais inválidas. Tente novamente.');
+    }
   }
 }
