@@ -12,7 +12,7 @@ import { PaginatedResponse } from '../models/paginated-response.model';
 export class ItemService {
   private apiUrl = `${environment.apiUrl}/itens`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   criarItem(itemRequest: ItemRequest): Observable<ItemResponse> {
     return this.http.post<ItemResponse>(this.apiUrl, itemRequest);
@@ -40,18 +40,22 @@ export class ItemService {
   }
 
   listaItens(pageNumber: number, pageSize: number, searchTerm: string = ''): Observable<PaginatedResponse<ItemResponse>> {
-      let params = new HttpParams()
-        .set('page', pageNumber.toString())
-        .set('size', pageSize.toString());
-  
-      if (searchTerm.trim() !== '') {
-        params = params.set('search', searchTerm);
-      }
-  
-      return this.http.get<PaginatedResponse<ItemResponse>>(this.apiUrl, { params });
+    let params = new HttpParams()
+      .set('page', pageNumber.toString())
+      .set('size', pageSize.toString());
+
+    if (searchTerm.trim() !== '') {
+      params = params.set('search', searchTerm);
     }
-    
-    criarRestaurante(restauranteRequest: ItemResponse): Observable<ItemResponse> {
-      return this.http.post<ItemResponse>(this.apiUrl, restauranteRequest);
-    }
+
+    return this.http.get<PaginatedResponse<ItemResponse>>(this.apiUrl, { params });
+  }
+
+  criarRestaurante(restauranteRequest: ItemResponse): Observable<ItemResponse> {
+    return this.http.post<ItemResponse>(this.apiUrl, restauranteRequest);
+  }
+
+  obterItemPorId(idItem: number): Observable<ItemResponse> {
+    return this.http.get<ItemResponse>(`${this.apiUrl}/${idItem}`);
+  }
 }

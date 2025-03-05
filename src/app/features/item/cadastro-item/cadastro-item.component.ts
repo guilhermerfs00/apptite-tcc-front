@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../../../core/services/item.service';
@@ -16,11 +16,19 @@ import { CategoriaResponse } from '../../../core/models/categoria/categoria-resp
   styleUrls: ['./cadastro-item.component.css'],
 })
 export class CadastroItemComponent {
+  
+  @ViewChild(ListaItemComponent) listaItens!: ListaItemComponent;
+  
   idCategoria!: number;
   categoria!: CategoriaResponse;
   itemRequest: ItemRequest = { nome: '', preco: 0, descricao: '', idCategoria: 0 };
 
-  constructor(private route: ActivatedRoute, private itemService: ItemService, private categoriaService: CategoriaService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private itemService: ItemService,
+    private categoriaService: CategoriaService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.idCategoria = +this.route.snapshot.paramMap.get('idCategoria')!;
@@ -35,16 +43,22 @@ export class CadastroItemComponent {
       },
     });
   }
-  onSubmit() {
+
+  onSubmit(): void {
     this.itemService.criarItem(this.itemRequest).subscribe({
       next: () => {
         alert('Item criado com sucesso!');
         this.itemRequest = { nome: '', preco: 0, descricao: '', idCategoria: 0 };
+        this.listaItens.carregarItens();
       },
       error: (error) => {
-        console.error('Erro ao criar item:', error);
-        alert('Erro ao criar item. Verifique os dados e tente novamente.');
+        console.error('Erro ao criar categoria:', error);
+        alert('Erro ao criar categoria. Verifique os dados e tente novamente.');
       },
     });
+  }
+
+  cadastrarVariacao(idVariacao: number): void {
+    this.router.navigate(['/cadastro-variacao', idVariacao]);
   }
 }

@@ -7,8 +7,12 @@ import { RegistroPasso1Component } from './features/registro/registro-passo-1/re
 import { RegistroPasso2Component } from './features/registro/registro-passo-2/registro-passo2.component';
 import { CadastroItemComponent } from './features/item/cadastro-item/cadastro-item.component';
 import { ListaItemComponent } from './features/item/lista-item/lista-item.component';
+import { CadastroVariacaoComponent } from './features/variacao/cadastro-variacao/cadastro-variacao.component';
+import { ListaVariacaoComponent } from './features/variacao/lista-variacao/lista-variacao.component';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 export const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro-restaurante', component: CadastroRestauranteComponent },
   { path: 'lista-restaurantes', component: ListaRestaurantesComponent },
@@ -17,6 +21,8 @@ export const routes: Routes = [
   { path: 'registro-passo2', component: RegistroPasso2Component },
   { path: 'cadastro-item/:idCategoria', component: CadastroItemComponent },
   { path: 'lista-item/:idCategoria', component: ListaItemComponent },
+  { path: 'cadastro-variacao/:idItem', component: CadastroVariacaoComponent },
+  { path: 'lista-variacao/:idItem', component: ListaVariacaoComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];

@@ -27,12 +27,10 @@ export class ListaRestaurantesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.listaRestaurantes();
+    this.carregarRestaurantes();
   }
 
-  listaRestaurantes(): void {
-    console.log(`Buscando restaurantes: page=${this.pageNumber}, size=${this.pageSize}, search=${this.searchTerm}`);
-    
+  carregarRestaurantes(): void {
     this.restauranteService.listaRestaurantes(this.pageNumber, this.pageSize, this.searchTerm).subscribe({
       next: (data: PaginatedResponse<RestauranteResponse>) => {
         this.restaurantes = data.content;
@@ -46,25 +44,41 @@ export class ListaRestaurantesComponent implements OnInit {
   }
 
   filtrarRestaurantes(): void {
-    this.pageNumber = 0; // Sempre reinicia a busca na primeira página
-    this.listaRestaurantes(); // Chama a API com o termo de pesquisa
+    this.pageNumber = 0;
+    this.carregarRestaurantes();
   }
 
   proximaPagina(): void {
     if (this.pageNumber < this.totalPages - 1) {
       this.pageNumber++;
-      this.listaRestaurantes();
+      this.carregarRestaurantes();
     }
   }
 
   paginaAnterior(): void {
     if (this.pageNumber > 0) {
       this.pageNumber--;
-      this.listaRestaurantes();
+      this.carregarRestaurantes();
     }
   }
 
   cadastrarCategoria(idRestaurante: number): void {
-    this.router.navigate(['/cadastro-categoria', idRestaurante]);
+    this.router.navigate(['/cadastro-categoria', idRestaurante]).then(() => {
+      this.carregarRestaurantes(); // Atualiza a lista após cadastro
+    });
+  }
+
+  excluirRestaurante(idRestaurante: number): void {
+    if (confirm('Tem certeza que deseja excluir este restaurante?')) {
+      this.restauranteService.excluirRestaurante(idRestaurante).subscribe({
+        next: () => {
+          alert('Restaurante excluído com sucesso!');
+          this.carregarRestaurantes(); // Atualiza a lista após exclusão
+        },
+        error: (error) => {
+          console.error('Erro ao excluir restaurante:', error);
+        },
+      });
+    }
   }
 }

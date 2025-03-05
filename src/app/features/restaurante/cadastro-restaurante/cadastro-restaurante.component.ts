@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RestauranteService } from '../../../core/services/restaurante.service';
@@ -13,6 +13,8 @@ import { ListaRestaurantesComponent } from '../lista-restaurante/lista-restauran
   styleUrls: ['./cadastro-restaurante.component.css'],
 })
 export class CadastroRestauranteComponent {
+  @ViewChild(ListaRestaurantesComponent) listaRestaurantes!: ListaRestaurantesComponent;
+
   restauranteRequest: RestauranteRequest = { nome: '', endereco: '' };
 
   constructor(private restauranteService: RestauranteService) {}
@@ -21,7 +23,8 @@ export class CadastroRestauranteComponent {
     this.restauranteService.criarRestaurante(this.restauranteRequest).subscribe({
       next: () => {
         alert('Restaurante criado com sucesso!');
-        this.restauranteRequest = { nome: '', endereco: '' }; // Limpa o formulário
+        this.restauranteRequest = { nome: '', endereco: '' };
+        this.listaRestaurantes.carregarRestaurantes();
       },
       error: (error) => {
         console.error('Erro ao criar restaurante:', error);

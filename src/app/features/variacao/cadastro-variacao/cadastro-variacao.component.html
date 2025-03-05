@@ -1,0 +1,22 @@
+<div class="cadastro-container">
+    <h1>Cadastro de Variação</h1>
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="nome">Nome da Variação</label>
+        <input type="text" id="nome" [(ngModel)]="variacaoRequest.nome" name="nome" required>
+      </div>
+  
+      <div class="input-group">
+        <label for="preco">Preço Adicional</label>
+        <input type="number" id="preco" [(ngModel)]="variacaoRequest.preco" name="preco" required>
+      </div>
+  
+      <button type="submit" class="cadastro-button">Cadastrar</button>
+    </form>
+  
+    <hr />
+  
+    <app-lista-variacao #lista (variacaoAdicionada)="lista.carregarVariacoes()"></app-lista-variacao>
+  </div>
+  

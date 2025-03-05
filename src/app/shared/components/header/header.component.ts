@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +7,31 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isSidebarOpen = false;
+  idRestaurante!: number;
+  idCategoria!: number;
+  idItem!: number;
 
-  constructor(private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   toggleSidebar(open: boolean) {
     this.isSidebarOpen = open;
+  }
+
+  dashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+
+  carregarRestaurantes() {
+    this.router.navigate(['/lista-restaurantes']);
+  }
+
+  cadastroRestaurante() {
+    this.router.navigate(['/cadastro-restaurante']);
   }
 
   logout() {

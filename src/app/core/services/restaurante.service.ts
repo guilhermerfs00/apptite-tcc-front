@@ -33,4 +33,8 @@ export class RestauranteService {
   criarRestaurante(restauranteRequest: RestauranteRequest): Observable<RestauranteResponse> {
     return this.http.post<RestauranteResponse>(this.apiUrl, restauranteRequest);
   }
+
+  excluirRestaurante(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

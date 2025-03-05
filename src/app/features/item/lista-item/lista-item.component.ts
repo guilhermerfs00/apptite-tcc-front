@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestauranteService } from '../../../core/services/restaurante.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestauranteResponse } from '../../../core/models/restaurante/restaurante-response.model';
 import { PaginatedResponse } from '../../../core/models/paginated-response.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -33,7 +32,7 @@ export class ListaItemComponent implements OnInit {
     private itemService: ItemService,
     private categoriaService: CategoriaService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.idCategoria = +this.route.snapshot.paramMap.get('idCategoria')!;
@@ -99,7 +98,7 @@ export class ListaItemComponent implements OnInit {
     }
   }
 
-  cadastrarItem(idCategoria: number): void {
-    this.router.navigate(['/cadastro-item', idCategoria]);
+  cadastrarVariacao(idItem: number): void {
+    this.router.navigate(['/cadastro-variacao', idItem]);
   }
 }
