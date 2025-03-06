@@ -64,7 +64,13 @@ export class ListaRestaurantesComponent implements OnInit {
 
   cadastrarCategoria(idRestaurante: number): void {
     this.router.navigate(['/cadastro-categoria', idRestaurante]).then(() => {
-      this.carregarRestaurantes(); // Atualiza a lista após cadastro
+      this.carregarRestaurantes();
+    });
+  }
+
+  cadastrarMesa(idRestaurante: number): void {
+    this.router.navigate(['/cadastro-mesa', idRestaurante]).then(() => {
+      this.carregarRestaurantes();
     });
   }
 
@@ -73,7 +79,7 @@ export class ListaRestaurantesComponent implements OnInit {
       this.restauranteService.excluirRestaurante(idRestaurante).subscribe({
         next: () => {
           alert('Restaurante excluído com sucesso!');
-          this.carregarRestaurantes(); // Atualiza a lista após exclusão
+          this.carregarRestaurantes();
         },
         error: (error) => {
           console.error('Erro ao excluir restaurante:', error);

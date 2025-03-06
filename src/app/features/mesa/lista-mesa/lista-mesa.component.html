@@ -1,0 +1,27 @@
+<div class="lista-mesas-container">
+    <h1>Lista de Mesas</h1>
+
+    <div class="mesas-grid">
+        <div *ngFor="let mesa of mesas" class="mesa-box">
+            <h2>Mesa {{ mesa.numero }}</h2>
+            
+            <!-- QR Code Gerado -->
+            <div class="qrcode-container" id="qrcode-{{ mesa.uuid }}">
+                <!-- O QR Code será gerado aqui via TypeScript -->
+            </div>
+
+            <!-- Container dos botões -->
+            <div class="button-container">
+                <!-- Botão para Baixar QR Code -->
+                <button class="download-button" (click)="baixarQRCode(mesa.uuid, mesa.numero)">
+                    <i class="fas fa-download"></i> Baixar QR Code
+                </button>
+
+                <!-- Botão de Exclusão -->
+                <button class="delete-button" (click)="excluirMesa(mesa.idMesa)">
+                    Excluir
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

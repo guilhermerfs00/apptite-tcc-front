@@ -10,6 +10,8 @@ import { ListaItemComponent } from './features/item/lista-item/lista-item.compon
 import { CadastroVariacaoComponent } from './features/variacao/cadastro-variacao/cadastro-variacao.component';
 import { ListaVariacaoComponent } from './features/variacao/lista-variacao/lista-variacao.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { CadastroMesaComponent } from './features/mesa/cadastro-mesa/cadastro-mesa.component';
+import { ListaMesaComponent } from './features/mesa/lista-mesa/lista-mesa.component';
 
 export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -23,6 +25,8 @@ export const routes: Routes = [
   { path: 'lista-item/:idCategoria', component: ListaItemComponent },
   { path: 'cadastro-variacao/:idItem', component: CadastroVariacaoComponent },
   { path: 'lista-variacao/:idItem', component: ListaVariacaoComponent },
+  { path: 'cadastro-mesa/:idRestaurante', component: CadastroMesaComponent },
+  { path: 'lista-mesa/:idRestaurante', component: ListaMesaComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];

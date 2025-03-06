@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HeaderComponent } from "./shared/components/header/header.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent],
   template: `
     <div class="app-container">
-      <app-header></app-header>
+      <app-header *ngIf="isLoggedIn"></app-header>
       <router-outlet></router-outlet>
     </div>
   `,
 })
 export class AppComponent {
-  isLoggedIn = !!localStorage.getItem('userToken'); // Verifica se o usuário está logado
+  isLoggedIn = !!localStorage.getItem('userToken');
 }

@@ -80,10 +80,18 @@ h1 {
   flex-grow: 1; /* Faz com que o conteúdo cresça igualmente */
 }
 
-/* Botão */
+/* Container de Botões - Adicionando Espaçamento */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaço entre os botões */
+  margin-top: 15px; /* Espaço acima dos botões */
+}
+
+/* Botão de Categoria */
 .categoria-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #000;
   color: #fff;
   border: none;
@@ -91,13 +99,39 @@ h1 {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: auto; /* Mantém o botão sempre no final do card */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .categoria-button:hover {
   background-color: #333;
 }
+
+.categoria-button:active {
+  background-color: #333;
+}
+
+/* Botão de Mesa */
+.mesa-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mesa-button:hover {
+  background-color: #333;
+}
+
+.mesa-button:active {
+  background-color: #333;
+}
+
 
 /* Responsividade */
 @media (max-width: 1024px) {

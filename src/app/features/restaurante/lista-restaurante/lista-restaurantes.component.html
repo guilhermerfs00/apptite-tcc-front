@@ -15,11 +15,18 @@
     <div *ngFor="let restaurante of restaurantes" class="restaurante-box">
       <h2>{{ restaurante.nome }}</h2>
       <p>{{ restaurante.endereco }}</p>
-      <button (click)="cadastrarCategoria(restaurante.idRestaurante)" class="categoria-button">
-        Cadastrar Categoria
-      </button>
+  
+      <div class="button-container">
+        <button (click)="cadastrarCategoria(restaurante.idRestaurante)" class="categoria-button">
+          Cadastrar Categoria
+        </button>
+        <button (click)="cadastrarMesa(restaurante.idRestaurante)" class="mesa-button">
+          Cadastrar Mesa
+        </button>
+      </div>
     </div>
   </div>
+  
 
   <div class="pagination-container" *ngIf="totalPages > 1">
     <button (click)="paginaAnterior()" [disabled]="pageNumber === 0" class="pagination-button">◀ Anterior</button>
