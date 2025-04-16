@@ -12,10 +12,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// ✅ Corrigido: caminho certo da build Angular
+// ✅ Caminho certo da build Angular
 app.use(express.static(path.join(__dirname, 'dist/apptite-front')));
 
-// ✅ Corrigido: rota fallback para SPA Angular
+// ✅ Rota fallback para Angular SPA
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/apptite-front/index.html'));
 });

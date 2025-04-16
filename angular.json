@@ -82,5 +82,6 @@
   },
   "cli": {
     "analytics": "1925d9a6-5706-4b00-9f49-3b2008a644ca"
-  }
+  },
+  "defaultProject": "apptite-front"
 }
