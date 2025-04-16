@@ -1,0 +1,218 @@
+/* Container principal */
+.lista-restaurantes-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Título */
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* Campo de busca */
+.search-container {
+  width: 100%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+  border-color: #000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid de restaurantes */
+.restaurantes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+/* Card do restaurante */
+.restaurante-box {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 180px; /* Define altura mínima para todos os cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.restaurante-box:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Nome do restaurante */
+.restaurante-box h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+/* Endereço */
+.restaurante-box p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Faz com que o conteúdo cresça igualmente */
+}
+
+/* Container de Botões - Adicionando Espaçamento */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaço entre os botões */
+  margin-top: 15px; /* Espaço acima dos botões */
+}
+
+/* Botão de Categoria */
+.categoria-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.categoria-button:hover {
+  background-color: #333;
+}
+
+.categoria-button:active {
+  background-color: #333;
+}
+
+/* Botão de Mesa */
+.mesa-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mesa-button:hover {
+  background-color: #333;
+}
+
+.mesa-button:active {
+  background-color: #333;
+}
+
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .restaurantes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .restaurantes-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Controles de Paginação */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #333;
+}
+
+.pedido-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e65100;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pedido-button:hover {
+  background-color: #d84315;
+}
+
+.pedido-button:active {
+  background-color: #bf360c;
+}
+
+.excluir-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #b71c1c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.excluir-button:hover {
+  background-color: #c62828;
+}
+
+.excluir-button:active {
+  background-color: #d32f2f;
+}

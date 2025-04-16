@@ -1,0 +1,30 @@
+<div class="lista-variacoes-container">
+    <h1>Lista de Variações</h1>
+  
+    <!-- Campo de busca -->
+    <div class="search-container">
+      <input 
+        type="text" 
+        placeholder="Buscar variação..." 
+        [(ngModel)]="searchTerm" 
+        (input)="filtrarVariacoes()"
+      />
+    </div>
+  
+    <div class="variacoes-grid">
+      <div *ngFor="let variacao of variacoes" class="variacao-box">
+        <h2>{{ variacao.nome }}</h2>
+        <p>Preço Adicional: {{ variacao.preco | currency }}</p>
+        <button class="delete-button" (click)="excluirVariacao(variacao.idVariacao)">
+          Excluir
+        </button>
+      </div>
+    </div>
+  
+    <div class="pagination-container" *ngIf="totalPages > 1">
+      <button (click)="paginaAnterior()" [disabled]="pageNumber === 0" class="pagination-button">◀ Anterior</button>
+      <span>Página {{ pageNumber + 1 }} de {{ totalPages }}</span>
+      <button (click)="proximaPagina()" [disabled]="pageNumber >= totalPages - 1" class="pagination-button">Próxima ▶</button>
+    </div>
+  </div>
+  

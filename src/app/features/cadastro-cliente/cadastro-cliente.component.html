@@ -1,0 +1,23 @@
+<div class="cadastro-container">
+    <h1>Acesso Cliente</h1>
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" [(ngModel)]="clienteRequest.nome" name="nome" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="celular">Celular</label>
+        <input type="text" id="celular" [(ngModel)]="clienteRequest.celular" name="celular" placeholder="(xx) xxxxx-xxxx" required>
+      </div>
+  
+      <div class="input-group">
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" [(ngModel)]="clienteRequest.cpf" name="cpf" placeholder="000.000.000-00" required>
+      </div>
+  
+      <button type="submit" class="cadastro-button">Entrar</button>
+    </form>
+  </div>
+  

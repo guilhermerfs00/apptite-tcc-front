@@ -1,0 +1,85 @@
+<div class="pedido-container">
+  <div class="search-container">
+    <input type="text" placeholder="Buscar produto..." />
+  </div>
+
+  <div class="indicacoes-container">
+    <h2>INDICADOS PARA VOCÊ</h2>
+    <div class="indicacoes-grid">
+      <img src="assets/img/recomendado1.jpg" alt="Recomendado" />
+      <img src="assets/img/recomendado1.jpg" alt="Recomendado" />
+    </div>
+  </div>
+
+  <div class="categoria-container">
+    <button
+      *ngFor="let categoria of categorias"
+      class="button-base categoria-button"
+      [class.active]="categoria.idCategoria === categoriaSelecionada"
+      (click)="categoriaSelecionada = categoria.idCategoria; onCategoriaChange()"
+    >
+      {{ categoria.nome }}
+    </button>
+  </div>
+
+  <div class="itens-lista">
+    <div *ngFor="let item of itens" class="item-box">
+      <img [src]="item.imagemUrl" alt="{{ item.nome }}" class="item-image" />
+
+      <div class="item-info">
+        <h2>{{ item.nome }}</h2>
+        <p>A partir de <strong>R$ {{ item.preco | number:'1.2-2' }}</strong></p>
+
+        <!-- Botão de ver variações -->
+        <button
+          *ngIf="(variacoesPorItem[item.idItem]?.length ?? 0) > 0"
+          (click)="toggleVariacoes(item.idItem)"
+          class="button-base toggle-button"
+        >
+          {{ itemExpandido === item.idItem ? 'Ocultar' : 'Ver variações' }}
+        </button>
+
+        <!-- Botão direto se não houver variações -->
+        <button
+          *ngIf="variacoesPorItem[item.idItem]?.length === 0"
+          (click)="enviarPedido(item.idItem)"
+          class="button-base pedido-button"
+        >
+          Confirmar Pedido
+        </button>
+
+        <!-- Lista de variações -->
+        <div *ngIf="itemExpandido === item.idItem">
+          <ng-container *ngIf="variacoesPorItem[item.idItem] as variacoes">
+            <div *ngIf="variacoes.length > 0" class="variacao-lista">
+              <h3 class="variacao-titulo">Selecione as variações</h3>
+
+              <div *ngFor="let variacao of variacoes" class="variacao-box">
+                <label class="variacao-checkbox">
+                  <input
+                    type="checkbox"
+                    [checked]="variacoesSelecionadas.includes(variacao.idVariacao)"
+                    (change)="toggleVariacaoSelecionada(variacao.idVariacao)"
+                  />
+                  <span>
+                    {{ variacao.nome }}
+                    <small class="preco-adicional">
+                      + R$ {{ variacao.preco | number:'1.2-2' }}
+                    </small>
+                  </span>
+                </label>
+              </div>
+
+              <button
+                (click)="enviarPedido(item.idItem)"
+                class="button-base pedido-button"
+              >
+                Confirmar Pedido
+              </button>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

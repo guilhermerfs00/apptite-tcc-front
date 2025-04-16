@@ -1,0 +1,15 @@
+<div class="variacao-container">
+    <h2>Variações do Pedido</h2>
+  
+    <div *ngIf="variacoes.length === 0">
+      Nenhuma variação encontrada para este item.
+    </div>
+  
+    <div class="variacao-lista">
+      <div *ngFor="let variacao of variacoes" class="variacao-card">
+        <h3>{{ variacao.nome }}</h3>
+        <p>Preço adicional: {{ variacao.preco | currency:'BRL' }}</p>
+      </div>
+    </div>
+  </div>
+  

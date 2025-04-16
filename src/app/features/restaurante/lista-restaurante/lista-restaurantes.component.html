@@ -1,0 +1,45 @@
+<div class="lista-restaurantes-container">
+  <h1>Lista de Restaurantes</h1>
+
+  <!-- Campo de busca -->
+  <div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Buscar restaurante..." 
+      [(ngModel)]="searchTerm" 
+      (input)="filtrarRestaurantes()"
+    />
+  </div>
+
+  <!-- Lista de Restaurantes -->
+  <div class="restaurantes-grid">
+    <div *ngFor="let restaurante of restaurantes" class="restaurante-box">
+      <h2>{{ restaurante.nome }}</h2>
+      <p>{{ restaurante.endereco }}</p>
+
+      <div class="button-container">
+        <button (click)="cadastrarCategoria(restaurante.idRestaurante)" class="categoria-button">
+          Cadastrar Categoria
+        </button>
+        <button (click)="cadastrarMesa(restaurante.idRestaurante)" class="mesa-button">
+          Cadastrar Mesa
+        </button>
+        <button (click)="cadastrarFuncionario(restaurante.idRestaurante)" class="mesa-button">
+          Cadastrar Funcionário
+        </button>
+        <button (click)="verPedidos(restaurante.idRestaurante)" class="pedido-button">
+          Ver Pedidos
+        </button>
+        <button (click)="excluirRestaurante(restaurante.idRestaurante)" class="excluir-button">
+          Excluir Restaurante
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-container" *ngIf="totalPages > 1">
+    <button (click)="paginaAnterior()" [disabled]="pageNumber === 0" class="pagination-button">◀ Anterior</button>
+    <span>Página {{ pageNumber + 1 }} de {{ totalPages }}</span>
+    <button (click)="proximaPagina()" [disabled]="pageNumber >= totalPages - 1" class="pagination-button">Próxima ▶</button>
+  </div>
+</div>

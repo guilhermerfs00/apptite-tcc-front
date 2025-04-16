@@ -1,0 +1,40 @@
+<div class="lista-itens-container">
+  <h1>Lista de Itens</h1>
+
+  <!-- Campo de busca -->
+  <div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Buscar item..." 
+      [(ngModel)]="searchTerm" 
+      (input)="filtrarItens()"
+    />
+  </div>
+
+  <div class="itens-grid">
+    <div *ngFor="let item of itens" class="item-box">
+      
+      <img 
+        [src]="item.imagemUrl"
+        alt="{{ item.nome }}"
+        class="item-img"
+      />
+
+      <h2>{{ item.nome }}</h2>
+
+      <button (click)="cadastrarVariacao(item.idItem)" class="categoria-button">
+        Cadastrar variação
+      </button>
+
+      <button class="delete-button" (click)="excluirItem(item.idItem)">
+        Excluir
+      </button>
+    </div>
+  </div>
+
+  <div class="pagination-container" *ngIf="totalPages > 1">
+    <button (click)="paginaAnterior()" [disabled]="pageNumber === 0" class="pagination-button">◀ Anterior</button>
+    <span>Página {{ pageNumber + 1 }} de {{ totalPages }}</span>
+    <button (click)="proximaPagina()" [disabled]="pageNumber >= totalPages - 1" class="pagination-button">Próxima ▶</button>
+  </div>
+</div>

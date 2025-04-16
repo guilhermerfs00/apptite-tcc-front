@@ -1,0 +1,237 @@
+/* Container principal */
+.lista-pedidos-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f4f6;
+}
+
+/* Título principal */
+.lista-pedidos-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+  color: #111827;
+}
+
+/* Layout lateral */
+.colunas-pedidos {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.coluna {
+  flex: 1 1 50%;
+  min-width: 350px;
+}
+
+.coluna h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+/* Grade de pedidos */
+.grade-pedidos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Card do pedido */
+.pedido-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.pedido-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.pedido-box h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ef4444;
+  margin-bottom: 8px;
+}
+
+.pedido-box p {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+/* Itens */
+.itens-container {
+  margin-bottom: 12px;
+}
+
+.item-bloco {
+  background: #f9fafb;
+  border-left: 4px solid #3b82f6;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.item-nome {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.item-preco {
+  font-size: 0.95rem;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.item-categoria {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Variações */
+.variacoes-titulo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin: 10px 0 4px;
+}
+
+.variacao-item {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-left: 12px;
+}
+
+/* Botões */
+.action-button {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: auto;
+  background-color: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #059669;
+}
+
+.action-button.orange {
+  background-color: #f97316;
+}
+
+.action-button.orange:hover {
+  background-color: #ea580c;
+}
+
+/* Mensagem de vazio */
+.pedido-box.vazio {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 2px dashed #facc15;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.95rem;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 1280px) {
+  .grade-pedidos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grade-pedidos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .coluna {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .grade-pedidos {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-pedidos-container h1 {
+    font-size: 1.5rem;
+  }
+}
+
+.filtro-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.filtro-container label {
+  font-size: 0.95rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.filtro-select {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #fff;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.filtro-select:focus {
+  border-color: #3b82f6;
+}
+
+.filtro-pesquisa-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-pesquisa {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  background-color: #fff;
+}
+
+.input-pesquisa:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+

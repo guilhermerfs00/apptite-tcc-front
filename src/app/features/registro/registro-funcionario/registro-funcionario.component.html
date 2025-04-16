@@ -1,0 +1,27 @@
+<div class="login-container">
+  <div class="logo">
+    <h1>Cadastro Funcionário</h1>
+  </div>
+  <form (ngSubmit)="onSubmit()" class="login-form">
+    <div class="input-group">
+      <label for="name">Nome</label>
+      <input type="text" id="name" [(ngModel)]="nome" name="name" placeholder="Digite o nome" required>
+    </div>
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Digite o email" required>
+    </div>
+    <div class="input-group">
+      <label for="password">Senha</label>
+      <input type="password" id="password" [(ngModel)]="senha" name="password" placeholder="Digite a senha" required>
+    </div>
+    <div class="input-group">
+      <label for="role">Função</label>
+      <select id="role" [(ngModel)]="role" name="role" required>
+        <option value="GARCON">Garçom</option>
+        <option value="CHEF">Cozinha</option>
+      </select>
+    </div>
+    <button type="submit" class="login-button">CADASTRAR FUNCIONÁRIO</button>
+  </form>
+</div>

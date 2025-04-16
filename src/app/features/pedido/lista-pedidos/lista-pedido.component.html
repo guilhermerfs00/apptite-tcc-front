@@ -1,0 +1,42 @@
+<div class="lista-pedidos-container">
+    <h1>Pedidos do Restaurante</h1>
+  
+    <div class="pedidos-grid">
+      <div *ngFor="let pedido of pedidos" class="pedido-box">
+        <h2>#{{ pedido.idPedido }} - {{ pedido.status }}</h2>
+  
+        <p><strong>Cliente:</strong> {{ pedido.cliente.nome }} ({{ pedido.cliente.celular }})</p>
+  
+        <div>
+          <strong>Itens:</strong>
+          <ul>
+            <li *ngFor="let item of pedido.itens">
+              {{ item.nome }} - R$ {{ item.preco | number:'1.2-2' }}
+              <br />
+              <small>Categoria: {{ item.categoria.nome }}</small>
+            </li>
+          </ul>
+        </div>
+  
+        <div *ngIf="pedido.variacoes.length > 0">
+          <strong>Variações:</strong>
+          <ul>
+            <li *ngFor="let v of pedido.variacoes">
+              {{ v.nome }} (+ R$ {{ v.preco | number:'1.2-2' }})
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+    <div class="pagination-container" *ngIf="totalPages > 1">
+      <button (click)="paginaAnterior()" [disabled]="pageNumber === 0" class="pagination-button">
+        ◀ Anterior
+      </button>
+      <span>Página {{ pageNumber + 1 }} de {{ totalPages }}</span>
+      <button (click)="proximaPagina()" [disabled]="pageNumber >= totalPages - 1" class="pagination-button">
+        Próxima ▶
+      </button>
+    </div>
+  </div>
+  

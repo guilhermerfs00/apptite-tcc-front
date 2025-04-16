@@ -1,0 +1,63 @@
+<div class="dashboard-container">
+  <h1 class="titulo">📊 Painel de Controle</h1>
+
+  <!-- Filtros -->
+  <div class="filtros-container">
+    <label>
+      Data Inicial:
+      <input type="date" [(ngModel)]="dataInicio" />
+    </label>
+
+    <label>
+      Data Final:
+      <input type="date" [(ngModel)]="dataFim" />
+    </label>
+
+    <button (click)="aplicarFiltro()" class="botao-aplicar">🔍 Aplicar Filtro</button>
+  </div>
+
+  <!-- Métricas -->
+  <div class="metricas">
+    <div class="bloco-metrica">
+      <h3>Total de Pedidos</h3>
+      <p>{{ totalPedidos }}</p>
+    </div>
+    <div class="bloco-metrica">
+      <h3>📦 Faturamento</h3>
+      <p class="valor">R$ {{ totalFaturamento | number:'1.2-2' }}</p>
+    </div>
+    <div class="bloco-metrica">
+      <h3>Pedidos Hoje</h3>
+      <p>{{ pedidosHoje }}</p>
+    </div>
+    <div class="bloco-metrica">
+      <h3>Variação</h3>
+      <p [ngClass]="{ positivo: variacaoHoje >= 0, negativo: variacaoHoje < 0 }">
+        {{ variacaoHoje | number:'1.0-0' }}%
+      </p>
+    </div>
+    <div class="bloco-metrica">
+      <h3>📈 Previsão Mês</h3>
+      <p>{{ pedidosPrevisao }}</p>
+    </div>
+  </div>
+
+  <!-- Gráficos -->
+  <div class="graficos">
+    <div class="grafico-container">
+      <h4>📌 Status dos Pedidos</h4>
+      <canvas id="graficoPizza"></canvas>
+    </div>
+    <div class="grafico-container">
+      <h4>📅 Pedidos por Mês</h4>
+      <canvas id="graficoBarra"></canvas>
+    </div>
+  </div>
+
+  <!-- Exportação -->
+  <div class="botoes-exportacao">
+    <button class="botao-exportar" (click)="exportarPDF()" [disabled]="exportando">
+      {{ exportando ? '⏳ Exportando...' : '📥 Exportar PDF' }}
+    </button>
+  </div>
+</div>

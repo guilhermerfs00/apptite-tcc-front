@@ -1,0 +1,39 @@
+<div class="sidebar" [class.open]="isSidebarOpen" 
+  (mouseenter)="toggleSidebar(true)" (mouseleave)="toggleSidebar(false)">
+
+  <button class="close-btn" (click)="toggleSidebar(false)">✖</button>
+
+  <nav>
+    <ng-container *ngIf="isAdmin">
+      <a routerLink="/dashboard" (click)="dashboard()">
+        <i class="fas fa-store"></i> Dashboard
+      </a>
+      <a routerLink="/lista-restaurantes" (click)="carregarRestaurantes()">
+        <i class="fas fa-store"></i> Restaurantes
+      </a>
+      <a routerLink="/cadastro-restaurante" (click)="cadastroRestaurante()">
+        <i class="fas fa-plus-circle"></i> Novo Restaurante
+      </a>
+      <a routerLink="/alterar-cadastro" (click)="toggleSidebar(false)">
+        <i class="fas fa-user-circle"></i> Perfil
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="isGarcon">
+      <a (click)="verPedidosGarcon()" class="mesa-button">
+        <i class="fas fa-concierge-bell"></i> Pedidos do Garçom
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="isChef">
+      <a (click)="verPedidosChef()" class="mesa-button">
+        <i class="fas fa-utensils"></i> Pedidos do Chef
+      </a>
+    </ng-container>
+    <hr style="margin: 10px 0; border-color: #ccc;">
+
+    <a (click)="logout()">
+      <i class="fas fa-sign-out-alt"></i> Sair
+    </a>
+  </nav>
+</div>

@@ -1,0 +1,16 @@
+<div class="cadastro-container">
+    <h1>Cadastro de Mesa</h1>
+
+    <form (ngSubmit)="onSubmit()">
+        <div class="input-group">
+            <label for="numero">Número da Mesa</label>
+            <input type="number" id="numero" [(ngModel)]="mesaRequest.numero" name="numero" required>
+        </div>
+
+        <button type="submit" class="cadastro-button">Cadastrar</button>
+    </form>
+
+    <hr />
+
+    <app-lista-mesa #lista (mesaAdicionada)="lista.carregarMesas()"></app-lista-mesa>
+</div>

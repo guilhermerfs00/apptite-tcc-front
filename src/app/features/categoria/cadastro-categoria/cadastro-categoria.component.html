@@ -1,0 +1,15 @@
+<div class="cadastro-container">
+  <h1>Cadastro de Restaurante</h1>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <label for="nome">Nome da Categoria</label>
+      <input type="text" id="nome" [(ngModel)]="categoriaRequest.nome" name="nome" required>
+    </div>
+    <button type="submit" class="cadastro-button">Cadastrar</button>
+  </form>
+
+  <hr />
+
+  <app-lista-categoria #lista (categoriaAdicionada)="lista.carregarCategorias()"></app-lista-categoria>
+</div>
