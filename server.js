@@ -3,7 +3,6 @@ const path = require('path');
 const helmet = require('helmet');
 const app = express();
 
-// Habilita CSP personalizada
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -18,15 +17,12 @@ app.use(
   })
 );
 
-// Serve arquivos estáticos
-app.use(express.static(path.join(__dirname, 'dist', 'apptite-front', 'browser')));
+app.use(express.static(path.join(__dirname, 'dist/apptite-front/browser')));
 
-// Rota fallback
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'apptite-front', 'browser', 'index.html'));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/apptite-front/browser/index.html'));
 });
 
-// Porta dinâmica
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
