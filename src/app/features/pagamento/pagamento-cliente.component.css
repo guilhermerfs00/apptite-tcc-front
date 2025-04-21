@@ -1,0 +1,101 @@
+.lista-pedidos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #fefce8;
+    border-radius: 12px;
+  }
+  
+  .lista-pedidos-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #e65100;
+  }
+  
+  .grade-pedidos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  
+  .pedido-box {
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.1);
+    border-left: 6px solid #fb8c00;
+  }
+  
+  .pedido-box h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ef6c00;
+    margin-bottom: 10px;
+  }
+  
+  .itens-container {
+    margin-top: 8px;
+  }
+  
+  .item-bloco {
+    background-color: #fff7ed;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-left: 4px solid #ffa726;
+  }
+  
+  .item-nome {
+    font-weight: 600;
+    color: #5d4037;
+  }
+  
+  .item-preco {
+    font-size: 0.95rem;
+    color: #2e7d32;
+  }
+  
+  .variacoes-titulo {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #6d4c41;
+  }
+  
+  .variacao-item {
+    font-size: 0.9rem;
+    margin-left: 12px;
+    color: #4e342e;
+  }
+  
+  .action-button.orange {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #fb8c00;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 3px 6px rgba(251, 140, 0, 0.3);
+  }
+  
+  .action-button.orange:hover {
+    background-color: #ef6c00;
+  }
+  
+  @media (max-width: 768px) {
+    .grade-pedidos {
+      grid-template-columns: 1fr;
+    }
+  
+    .lista-pedidos-container h1 {
+      font-size: 1.5rem;
+    }
+  }
+  

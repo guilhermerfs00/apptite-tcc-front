@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 export interface UserProfile {
   nome: string;
-  role: 'ADMIN' | 'CHEF' | 'GARCON' | '';
+  role: 'ADMIN' | 'CHEF' | 'GARCON' | 'CLIENTE' | '';
 }
 
 @Injectable({
@@ -11,8 +13,9 @@ export interface UserProfile {
 })
 export class AuthService {
   private profileSubject = new BehaviorSubject<UserProfile>({ nome: '', role: '' });
+  private apiUrl = `${environment.apiUrl}/usuarios`;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.atualizarPerfil();
   }
 
@@ -40,6 +43,10 @@ export class AuthService {
     } else {
       this.profileSubject.next({ nome: '', role: '' });
     }
+  }
+
+  loginCliente(idCliente: number): Observable<string> {
+    return this.http.post(`${environment.apiUrl}/auth/login/cliente/${idCliente}`, null, { responseType: 'text' });
   }
 
   logout(): void {

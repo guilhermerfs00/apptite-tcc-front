@@ -126,5 +126,9 @@ export class PedidoService {
   
     return this.http.get<PedidoResponse[]>(`${this.apiUrl}/filtro`, { params });
   }
-  
+
+  buscarPedidosPorClienteId(idCliente: number): Observable<PageResponse<PedidoResponse>> {
+    return this.http.get<PageResponse<PedidoResponse>>(`${this.apiUrl}/cliente/${idCliente}`);
+  }
+
 }

@@ -18,6 +18,8 @@ import { ListaPedidoComponent } from './features/pedido/lista-pedidos/lista-pedi
 import { RegistroFuncionarioComponent } from './features/registro/registro-funcionario/registro-funcionario.component';
 import { ListaPedidoChefComponent } from './features/pedido/lista-pedidos-chef/lista-pedido-chef.component';
 import { ListaPedidoGarconComponent } from './features/pedido/lista-pedidos-garcon/lista-pedido-garcon.component';
+import { ListarPedidosClienteComponent } from './features/pedido/lista-pedidos-cliente/listar-pedidos-cliente.component';
+import { PagamentoClienteComponent } from './features/pagamento/pagamento-cliente.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -40,6 +42,8 @@ export const routes: Routes = [
   { path: 'cadastro-funcionario/:idRestaurante', component: RegistroFuncionarioComponent },
   { path: 'listar-pedidos-chef/:idRestaurante', component: ListaPedidoChefComponent },
   { path: 'listar-pedidos-garcon/:idRestaurante', component: ListaPedidoGarconComponent },
+  { path: 'listar-pedidos-cliente/:id', component: ListarPedidosClienteComponent },
+  { path: 'pagamento/:id', component: PagamentoClienteComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' }
 ];

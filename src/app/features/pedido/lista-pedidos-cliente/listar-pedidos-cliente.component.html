@@ -1,0 +1,55 @@
+<div class="lista-pedidos-container">
+    <h1>Meus Pedidos</h1>
+  
+    <div class="filtro-pesquisa-container">
+      <input
+        type="text"
+        [(ngModel)]="filtroTexto"
+        (input)="filtrarPedidos()"
+        placeholder="Buscar por item ou status..."
+        class="input-pesquisa"
+      />
+    </div>
+  
+    <div class="filtro-container">
+      <label for="ordenarPedidos">Ordenar:</label>
+      <select
+        id="ordenarPedidos"
+        [(ngModel)]="ordem"
+        (change)="ordenarPedidos()"
+        class="filtro-select"
+      >
+        <option value="maisRecentes">Mais recentes</option>
+        <option value="maisAntigos">Mais antigos</option>
+      </select>
+    </div>
+  
+    <div *ngIf="pedidos.length === 0" class="pedido-box vazio">
+      Nenhum pedido encontrado.
+    </div>
+  
+    <div class="grade-pedidos">
+      <div *ngFor="let pedido of pedidos" class="pedido-box fade-in">
+        <h3>#{{ pedido.idPedido }} — {{ pedido.status }}</h3>
+        <p><small>🕒 {{ pedido.tempoDecorrido }}</small></p>
+  
+        <div class="itens-container">
+          <div *ngFor="let item of pedido.itens" class="item-bloco">
+            <div class="item-nome">{{ item.nome }}</div>
+            <div class="item-categoria">Categoria: {{ item.categoria.nome }}</div>
+            <div class="item-preco">Preço: R$ {{ item.preco | number:'1.2-2' }}</div>
+          </div>
+  
+          <div *ngIf="pedido.variacoes?.length">
+            <div class="variacoes-titulo">Variações:</div>
+            <ul>
+              <li *ngFor="let v of pedido.variacoes" class="variacao-item">
+                {{ v.nome }} — <strong>+ R$ {{ v.preco | number:'1.2-2' }}</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

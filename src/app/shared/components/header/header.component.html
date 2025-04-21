@@ -1,10 +1,10 @@
-<header>
-  <div class="logo-container" (click)="dashboard()">
+<header [ngClass]="{ 'cliente-header': isCliente }">
+  <div class="logo-container" (click)="isAdmin ? dashboard() : pedidosCliente()">
     <img src="assets/img/logo.png" alt="Logo Apptite" class="logo-img" />
   </div>
 
   <button class="menu-toggle" (click)="toggleMobileMenu()" aria-label="Abrir menu">
-    &#9776; <!-- 3 tracinhos -->
+    &#9776;
   </button>
 
   <nav [ngClass]="{ 'active': isMobileMenuOpen }">
@@ -20,6 +20,13 @@
 
     <ng-container *ngIf="isChef">
       <a (click)="verPedidosChef(); toggleMobileMenu()">Pedidos do Chef</a>
+    </ng-container>
+
+    <ng-container *ngIf="isCliente">
+      <a (click)="pedidosCliente(); toggleMobileMenu()">Continuar Comprando</a>
+      <a (click)="verPedidosCliente(); toggleMobileMenu()">Meus Pedidos</a>
+      <a (click)="pagarConta(); toggleMobileMenu()">Pagar Conta</a>
+      <a (click)="pagarConta(); toggleMobileMenu()">Status Pagamento</a>
     </ng-container>
 
     <a (click)="logout(); toggleMobileMenu()" class="logout">Sair</a>

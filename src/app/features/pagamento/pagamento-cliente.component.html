@@ -1,0 +1,32 @@
+<div class="lista-pedidos-container">
+    <h1>💳 Pagamento</h1>
+  
+    <div class="grade-pedidos">
+      <div *ngFor="let pedido of pedidos" class="pedido-box">
+        <h3>#{{ pedido.idPedido }} — {{ pedido.status }}</h3>
+        <div class="itens-container">
+          <div *ngFor="let item of pedido.itens" class="item-bloco">
+            <div class="item-nome">{{ item.nome }}</div>
+            <div class="item-preco">R$ {{ item.preco | number:'1.2-2' }}</div>
+          </div>
+  
+          <div *ngIf="pedido.variacoes?.length">
+            <div class="variacoes-titulo">Variações:</div>
+            <ul>
+              <li *ngFor="let v of pedido.variacoes" class="variacao-item">
+                {{ v.nome }} — <strong>+ R$ {{ v.preco | number:'1.2-2' }}</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div style="margin-top: 24px; text-align: center;">
+      <h2>Total a pagar: <strong style="color: #059669">R$ {{ total | number:'1.2-2' }}</strong></h2>
+      <button class="action-button orange" (click)="efetuarPagamento()">
+        Confirmar Pagamento
+      </button>
+    </div>
+  </div>
+  

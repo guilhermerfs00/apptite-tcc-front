@@ -16,6 +16,10 @@ header {
   overflow-x: hidden;
 }
 
+.cliente-header {
+  background-color: #fff3e0;
+  color: #5d4037;
+}
 
 .logo-container {
   display: flex;
