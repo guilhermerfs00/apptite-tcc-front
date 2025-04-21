@@ -12,10 +12,10 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isSidebarOpen = false;
   isAdmin = false;
   isChef = false;
   isGarcon = false;
+  isMobileMenuOpen = false;
 
   constructor(
     private router: Router,
@@ -31,8 +31,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  toggleSidebar(open: boolean): void {
-    this.isSidebarOpen = open;
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
   dashboard(): void {
@@ -55,23 +55,15 @@ export class HeaderComponent implements OnInit {
       const payload = JSON.parse(atob(token.split('.')[1]));
       const email = payload?.sub;
 
-      if (!email) {
-        console.warn('Email não encontrado no token.');
-        return;
-      }
+      if (!email) return;
 
       this.usuarioService.findByEmail(email).subscribe({
         next: (user) => {
           if (user.idRestaurante) {
-            this.toggleSidebar(false);
             this.router.navigate([`/listar-pedidos-chef/${user.idRestaurante}`]);
-          } else {
-            console.warn('Usuário sem restaurante vinculado.');
           }
         },
-        error: () => {
-          console.error('Erro ao buscar usuário por e-mail.');
-        }
+        error: () => console.error('Erro ao buscar usuário por e-mail.')
       });
     } catch (error) {
       console.error('Erro ao decodificar token:', error);
@@ -86,23 +78,15 @@ export class HeaderComponent implements OnInit {
       const payload = JSON.parse(atob(token.split('.')[1]));
       const email = payload?.sub;
 
-      if (!email) {
-        console.warn('Email não encontrado no token.');
-        return;
-      }
+      if (!email) return;
 
       this.usuarioService.findByEmail(email).subscribe({
         next: (user) => {
           if (user.idRestaurante) {
-            this.toggleSidebar(false);
             this.router.navigate([`/listar-pedidos-garcon/${user.idRestaurante}`]);
-          } else {
-            console.warn('Usuário sem restaurante vinculado.');
           }
         },
-        error: () => {
-          console.error('Erro ao buscar usuário por e-mail.');
-        }
+        error: () => console.error('Erro ao buscar usuário por e-mail.')
       });
     } catch (error) {
       console.error('Erro ao decodificar token:', error);
