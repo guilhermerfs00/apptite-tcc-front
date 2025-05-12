@@ -1,14 +1,8 @@
 <div class="pedido-container">
+  <h1 class="titulo-pedido">Monte seu pedido 🍽️</h1>
+
   <div class="search-container">
     <input type="text" placeholder="Buscar produto..." />
-  </div>
-
-  <div class="indicacoes-container">
-    <h2>INDICADOS PARA VOCÊ</h2>
-    <div class="indicacoes-grid">
-      <img src="assets/img/recomendado1.jpg" alt="Recomendado" />
-      <img src="assets/img/recomendado1.jpg" alt="Recomendado" />
-    </div>
   </div>
 
   <div class="categoria-container">
@@ -22,7 +16,7 @@
     </button>
   </div>
 
-  <div class="itens-lista">
+  <div class="itens-grid">
     <div *ngFor="let item of itens" class="item-box">
       <img [src]="item.imagemUrl" alt="{{ item.nome }}" class="item-image" />
 
@@ -30,7 +24,6 @@
         <h2>{{ item.nome }}</h2>
         <p>A partir de <strong>R$ {{ item.preco | number:'1.2-2' }}</strong></p>
 
-        <!-- Botão de ver variações -->
         <button
           *ngIf="(variacoesPorItem[item.idItem]?.length ?? 0) > 0"
           (click)="toggleVariacoes(item.idItem)"
@@ -39,7 +32,6 @@
           {{ itemExpandido === item.idItem ? 'Ocultar' : 'Ver variações' }}
         </button>
 
-        <!-- Botão direto se não houver variações -->
         <button
           *ngIf="variacoesPorItem[item.idItem]?.length === 0"
           (click)="enviarPedido(item.idItem)"
@@ -48,7 +40,6 @@
           Confirmar Pedido
         </button>
 
-        <!-- Lista de variações -->
         <div *ngIf="itemExpandido === item.idItem">
           <ng-container *ngIf="variacoesPorItem[item.idItem] as variacoes">
             <div *ngIf="variacoes.length > 0" class="variacao-lista">

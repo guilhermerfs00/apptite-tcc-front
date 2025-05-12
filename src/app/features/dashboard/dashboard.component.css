@@ -15,7 +15,6 @@
   margin-bottom: 30px;
 }
 
-/* Filtros */
 .filtros-container {
   display: flex;
   justify-content: center;
@@ -53,7 +52,6 @@
   background-color: #2563eb;
 }
 
-/* Métricas */
 .metricas {
   display: flex;
   flex-wrap: wrap;
@@ -71,14 +69,14 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
-.bloco-metrica h3 {
-  font-size: 1rem;
+.bloco-metrica h3, .bloco-metrica h4 {
+  font-size: 1.1rem;
   color: #1e293b;
   margin-bottom: 8px;
 }
 
 .bloco-metrica p {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #0f172a;
 }
@@ -94,7 +92,6 @@
   color: #ef4444;
 }
 
-/* Gráficos */
 .graficos {
   display: flex;
   gap: 30px;
@@ -118,7 +115,40 @@
   text-align: center;
 }
 
-/* Exportação */
+/* Feedbacks */
+.feedbacks-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.feedback-nota {
+  flex: 1 1 240px;
+}
+
+.feedback-lista {
+  flex: 1 1 600px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.feedback-lista ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feedback-lista li {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 8px;
+  color: #334155;
+}
+
 .botoes-exportacao {
   text-align: center;
 }
@@ -138,14 +168,11 @@
   background-color: #1e293b;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
-  .metricas {
+  .metricas,
+  .graficos,
+  .feedbacks-container {
     flex-direction: column;
     align-items: center;
-  }
-
-  .graficos {
-    flex-direction: column;
   }
 }

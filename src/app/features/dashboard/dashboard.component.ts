@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { PedidoService, PedidoResponse } from '../../core/services/pedido.service';
+import { FeedbackService, FeedbackResponse } from '../../core/services/feedback.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -27,14 +28,23 @@ export class DashboardComponent implements AfterViewInit {
   exportando = false;
   carregando = false;
 
-  constructor(private pedidoService: PedidoService) {}
+  // Feedbacks
+  feedbacks: FeedbackResponse[] = [];
+  mediaNota: number = 0;
+
+  constructor(
+    private pedidoService: PedidoService,
+    private feedbackService: FeedbackService
+  ) {}
 
   ngAfterViewInit(): void {
     this.carregarPedidosFiltrados();
+    this.carregarFeedbacksRestaurante(1); // ID de exemplo do restaurante
   }
 
   aplicarFiltro(): void {
     this.carregarPedidosFiltrados();
+    this.carregarFeedbacksRestaurante(1); // Atualize o ID conforme filtro se necessário
   }
 
   carregarPedidosFiltrados(): void {
@@ -68,6 +78,24 @@ export class DashboardComponent implements AfterViewInit {
       error: () => {
         console.error('Erro ao carregar pedidos');
         this.carregando = false;
+      }
+    });
+  }
+
+  carregarFeedbacksRestaurante(idRestaurante: number): void {
+    this.feedbackService.findByRestaurante(idRestaurante).subscribe({
+      next: (feedbacks) => {
+        this.feedbacks = feedbacks;
+        if (feedbacks.length > 0) {
+          this.mediaNota = feedbacks.reduce((sum, f) => sum + (f.nota || 0), 0) / feedbacks.length;
+        } else {
+          this.mediaNota = 0;
+        }
+      },
+      error: () => {
+        console.error('Erro ao carregar feedbacks');
+        this.feedbacks = [];
+        this.mediaNota = 0;
       }
     });
   }

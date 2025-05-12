@@ -1,5 +1,51 @@
-/* Estilos globais */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
+/* 🌐 Estilos Globais e Variáveis */
+:root {
+  --cor-fundo: #fff8e1;
+  --cor-primaria: #ff9800;
+  --cor-secundaria: #ffe0b2;
+  --cor-texto: #5d4037;
+  --cor-texto-suave: #6d4c41;
+  --cor-acento: #d84315;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Tipografia padrão */
+h1, h2, h3, h4 {
+  color: var(--cor-acento);
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Botões */
+button {
+  font-family: inherit;
+}
+
+/* Container padrão */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}

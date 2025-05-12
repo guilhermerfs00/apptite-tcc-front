@@ -172,4 +172,19 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+
+  abrirFeedback(): void {
+    const token = localStorage.getItem('accessToken');
+    if (!token) return;
+  
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const idCliente = payload?.id;
+      if (!idCliente) return;
+      this.router.navigate([`/feedback/${idCliente}`]);
+    } catch (error) {
+      console.error('Erro ao decodificar token para feedback:', error);
+    }
+  }
+  
 }

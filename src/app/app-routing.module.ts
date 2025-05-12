@@ -20,6 +20,7 @@ import { ListaPedidoChefComponent } from './features/pedido/lista-pedidos-chef/l
 import { ListaPedidoGarconComponent } from './features/pedido/lista-pedidos-garcon/lista-pedido-garcon.component';
 import { ListarPedidosClienteComponent } from './features/pedido/lista-pedidos-cliente/listar-pedidos-cliente.component';
 import { PagamentoClienteComponent } from './features/pagamento/pagamento-cliente.component';
+import { FeedbackClienteComponent } from './features/feedback/feedback-cliente.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -44,6 +45,7 @@ export const routes: Routes = [
   { path: 'listar-pedidos-garcon/:idRestaurante', component: ListaPedidoGarconComponent },
   { path: 'listar-pedidos-cliente/:id', component: ListarPedidosClienteComponent },
   { path: 'pagamento/:id', component: PagamentoClienteComponent },
+  { path: 'feedback/:idCliente', component: FeedbackClienteComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' }
 ];

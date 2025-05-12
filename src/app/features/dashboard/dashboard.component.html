@@ -54,6 +54,27 @@
     </div>
   </div>
 
+  <!-- Feedbacks e Notas -->
+  <div class="feedbacks-container">
+    <div class="bloco-metrica feedback-nota">
+      <h4>⭐ Média das Notas</h4>
+      <p>{{ mediaNota | number:'1.1-1' }}</p>
+    </div>
+    <div class="feedback-lista">
+      <h4>📝 Feedbacks Recebidos</h4>
+      <div *ngIf="feedbacks.length > 0; else semFeedbacks">
+        <ul>
+          <li *ngFor="let f of feedbacks">
+            <strong>{{ f.dataCriacao | date:'short' }}:</strong> {{ f.conteudo }}
+          </li>
+        </ul>
+      </div>
+      <ng-template #semFeedbacks>
+        <p>Nenhum feedback encontrado.</p>
+      </ng-template>
+    </div>
+  </div>
+
   <!-- Exportação -->
   <div class="botoes-exportacao">
     <button class="botao-exportar" (click)="exportarPDF()" [disabled]="exportando">
