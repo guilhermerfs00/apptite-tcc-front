@@ -6,10 +6,8 @@
     <input type="text" placeholder="Buscar produto..." />
   </div>
 
-  <div class="categoria-scroll-wrapper">
-    <button class="scroll-arrow left" (click)="scrollCategoria('left')">‹</button>
-
-    <div class="categoria-container" #scrollContainer>
+  <div class="categoria-scroll-modern">
+    <div class="categoria-container-modern" #scrollContainer>
       <button
         *ngFor="let categoria of categorias"
         class="button-base categoria-button"
@@ -19,8 +17,6 @@
         {{ categoria.nome }}
       </button>
     </div>
-
-    <button class="scroll-arrow right" (click)="scrollCategoria('right')">›</button>
   </div>
 
   <div class="itens-grid">

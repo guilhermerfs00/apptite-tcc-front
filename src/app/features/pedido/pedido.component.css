@@ -63,7 +63,6 @@ body {
 
 .categoria-button {
   scroll-snap-align: start;
-  flex: 0 0 auto;
 }
 
 .button-base {
@@ -227,25 +226,49 @@ body {
   align-items: center;
 }
 
-.scroll-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-  color: #e65100;
-  font-weight: bold;
+.categoria-scroll-modern {
+  margin-bottom: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 0;
+}
+
+.categoria-container-modern {
+  display: inline-flex;
+  gap: 12px;
   padding: 4px 8px;
-  user-select: none;
+  min-width: max-content;
 }
 
-.scroll-arrow.left {
-  left: -4px;
+.categoria-container-modern::-webkit-scrollbar {
+  height: 6px;
 }
 
-.scroll-arrow.right {
-  right: -4px;
+.categoria-container-modern::-webkit-scrollbar-thumb {
+  background-color: #ffb74d;
+  border-radius: 8px;
+}
+
+.categoria-container-modern::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.categoria-button {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #ffecb3;
+  color: #5d4037;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.categoria-button.active {
+  background: linear-gradient(90deg, #ff9800, #ff5722);
+  color: #fff;
+}
+
+.categoria-button:hover {
+  background-color: #ffe082;
+  color: #000;
 }
