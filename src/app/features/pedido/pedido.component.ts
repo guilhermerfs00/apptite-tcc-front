@@ -12,7 +12,8 @@ import { VariacaoResponse } from '../../core/models/variacao-response.model';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import Swal from 'sweetalert2'; // ✅ Importação do SweetAlert2
+import Swal from 'sweetalert2';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-pedido',
@@ -22,6 +23,7 @@ import Swal from 'sweetalert2'; // ✅ Importação do SweetAlert2
   styleUrls: ['./pedido.component.css']
 })
 export class PedidoComponent implements OnInit {
+  @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef;
   idCliente!: number;
   idRestaurante!: number;
   categorias: CategoriaResponse[] = [];
@@ -170,5 +172,13 @@ export class PedidoComponent implements OnInit {
         });
       }
     });
+  }
+
+  scrollCategoria(direcao: 'left' | 'right'): void {
+    const el = this.scrollContainer?.nativeElement as HTMLElement;
+    const scrollAmount = 200;
+    if (el) {
+      el.scrollBy({ left: direcao === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
   }
 }

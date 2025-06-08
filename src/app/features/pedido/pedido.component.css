@@ -52,15 +52,18 @@ body {
   margin-bottom: 24px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0, black 30px, black calc(100% - 30px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 30px, black calc(100% - 30px), transparent 100%);
 }
 
 .categoria-container::-webkit-scrollbar {
-  display: none; /* Oculta a barra de rolagem no Chrome, Safari e Edge */
+  display: none;
 }
 
 .categoria-button {
   scroll-snap-align: start;
-  flex: 0 0 auto; /* Evita quebra de linha */
+  flex: 0 0 auto;
 }
 
 .button-base {
@@ -216,4 +219,33 @@ body {
   .button-base {
     width: 100%;
   }
+}
+
+.categoria-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  color: #e65100;
+  font-weight: bold;
+  padding: 4px 8px;
+  user-select: none;
+}
+
+.scroll-arrow.left {
+  left: -4px;
+}
+
+.scroll-arrow.right {
+  right: -4px;
 }

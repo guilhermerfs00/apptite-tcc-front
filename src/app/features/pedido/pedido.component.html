@@ -1,3 +1,4 @@
+<!-- pedido.component.html -->
 <div class="pedido-container">
   <h1 class="titulo-pedido">Monte seu pedido 🍽️</h1>
 
@@ -5,15 +6,21 @@
     <input type="text" placeholder="Buscar produto..." />
   </div>
 
-  <div class="categoria-container">
-    <button
-      *ngFor="let categoria of categorias"
-      class="button-base categoria-button"
-      [class.active]="categoria.idCategoria === categoriaSelecionada"
-      (click)="categoriaSelecionada = categoria.idCategoria; onCategoriaChange()"
-    >
-      {{ categoria.nome }}
-    </button>
+  <div class="categoria-scroll-wrapper">
+    <button class="scroll-arrow left" (click)="scrollCategoria('left')">‹</button>
+
+    <div class="categoria-container" #scrollContainer>
+      <button
+        *ngFor="let categoria of categorias"
+        class="button-base categoria-button"
+        [class.active]="categoria.idCategoria === categoriaSelecionada"
+        (click)="categoriaSelecionada = categoria.idCategoria; onCategoriaChange()"
+      >
+        {{ categoria.nome }}
+      </button>
+    </div>
+
+    <button class="scroll-arrow right" (click)="scrollCategoria('right')">›</button>
   </div>
 
   <div class="itens-grid">
