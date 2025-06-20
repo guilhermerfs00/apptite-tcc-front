@@ -11,7 +11,6 @@
     <ng-container *ngIf="isAdmin">
       <a routerLink="/dashboard" (click)="dashboard(); toggleMobileMenu()">Dashboard</a>
       <a routerLink="/cadastro-restaurante" (click)="cadastroRestaurante(); toggleMobileMenu()">Restaurante</a>
-      <a routerLink="/alterar-cadastro" (click)="toggleMobileMenu()">Perfil</a>
     </ng-container>
 
     <ng-container *ngIf="isGarcon">
